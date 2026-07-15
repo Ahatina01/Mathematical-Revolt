@@ -1,0 +1,315 @@
+[gd_scene format=3 uid="uid://djbb63xfup33w"]
+
+[sub_resource type="GDScript" id="GDScript_rjf02"]
+script/source = "extends CanvasLayer
+# ================================================================
+#  МАТЕМАТИКА В БОЮ — math_combat.gd
+# ================================================================
+
+const TIME_LIMIT:    float = 2.0
+const CRIT_MULT:     float = 2.0
+const MISS_MULT:     float = 0.5
+const NORMAL_MULT:   float = 1.0
+const MATH_DIFFICULTY: int = 0  # 0-2
+
+@onready var question_panel = $Root/QuestionPanel
+@onready var q_label = $Root/QuestionPanel/VBoxContainer/QLabel
+@onready var answer_panel = $Root/AnswerPanel
+@onready var timer_bar = $Root/TimerBar
+@onready var answer_btns = [
+	$Root/AnswerPanel/HBoxContainer/ABtn0,
+	$Root/AnswerPanel/HBoxContainer/ABtn1,
+	$Root/AnswerPanel/HBoxContainer/ABtn2,
+]
+
+var active := false
+var time_left: float = 0.0
+var current_question: Dictionary = {}
+var pending_damage: int = 0
+var target_enemy: Node = null
+var player_ref: Node = null
+
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	_hide_all()
+
+	for i in range(answer_btns.size()):
+		var idx = i
+		answer_btns[i].pressed.connect(func(): _on_answer(idx))
+
+	timer_bar.min_value = 0
+	timer_bar.max_value = TIME_LIMIT
+	timer_bar.value = TIME_LIMIT
+
+
+func connect_player(p: Node) -> void:
+	player_ref = p
+	if p.has_signal(\"attacked\"):
+		p.attacked.connect(_on_player_attacked)
+
+
+func _on_player_attacked(base_damage: int) -> void:
+	if active:
+		return
+
+	target_enemy = _find_nearest_enemy()
+	if not target_enemy:
+		return
+
+	pending_damage = base_damage
+	_show_question()
+
+
+func _show_question() -> void:
+	active = true
+	time_left = TIME_LIMIT
+
+	if Engine.has_singleton(\"MathSystem\"):
+		current_question = MathSystem.generate_question(MATH_DIFFICULTY)
+	else:
+		current_question = _fallback_question()
+
+	q_label.text = current_question[\"question\"]
+
+	var options: Array = current_question[\"options\"]
+	for i in range(answer_btns.size()):
+		answer_btns[i].text = str(options[i])
+		answer_btns[i].disabled = false
+		answer_btns[i].modulate = Color.WHITE
+
+	_position_question_panel()
+
+	question_panel.visible = true
+	answer_panel.visible = true
+	timer_bar.visible = true
+	timer_bar.value = TIME_LIMIT
+
+
+func _position_question_panel() -> void:
+	var vp = get_viewport().get_visible_rect().size  # ← ИСПРАВЛЕНО
+	
+	if not is_instance_valid(target_enemy):
+		question_panel.position = Vector2(vp.x / 2 - 120, vp.y / 2 - 200)
+		return
+
+	var cam = get_viewport().get_camera_2d()
+	var screen_pos: Vector2
+	
+	if cam:
+		screen_pos = target_enemy.global_position - cam.global_position + vp / 2
+	else:
+		screen_pos = target_enemy.global_position
+
+	var panel_x = clampf(screen_pos.x - 120, 8, vp.x - 248)
+	var panel_y = clampf(screen_pos.y - 120, 8, vp.y - 100)
+	question_panel.position = Vector2(panel_x, panel_y)
+
+	answer_panel.position = Vector2(vp.x / 2 - 180, vp.y - 80)
+
+
+func _process(delta: float) -> void:
+	if not active:
+		return
+
+	time_left -= delta
+	timer_bar.value = time_left
+
+	var t = time_left / TIME_LIMIT
+	timer_bar.modulate = Color(1.0 - t, t, 0.2)
+
+	if time_left <= 0.0:
+		_timeout()
+
+
+func _on_answer(btn_index: int) -> void:
+	if not active:
+		return
+
+	var chosen: int = current_question[\"options\"][btn_index]
+	var correct: bool = (chosen == current_question[\"correct\"])
+
+	for i in range(answer_btns.size()):
+		answer_btns[i].disabled = true
+		if current_question[\"options\"][i] == current_question[\"correct\"]:
+			answer_btns[i].modulate = Color(0.3, 1.0, 0.4)
+		else:
+			answer_btns[i].modulate = Color(1.0, 0.4, 0.4)
+
+	var multiplier = CRIT_MULT if correct else MISS_MULT
+	_apply_attack(multiplier, correct)
+
+	await get_tree().create_timer(0.4).timeout
+	_hide_all()
+	active = false
+
+
+func _timeout() -> void:
+	_apply_attack(NORMAL_MULT, false)
+	_hide_all()
+	active = false
+
+
+func _apply_attack(multiplier: float, show_fx: bool) -> void:
+	if not is_instance_valid(target_enemy):
+		return
+
+	var dmg = int(ceil(pending_damage * multiplier))
+
+	if target_enemy.has_method(\"take_damage\"):
+		target_enemy.take_damage(dmg)
+
+	_spawn_damage_number(dmg, multiplier)
+
+	if show_fx and multiplier > 1.0:
+		var fx_scene_path = \"res://scenes/correct_answer_fx.tscn\"
+		if ResourceLoader.exists(fx_scene_path):
+			var fx = load(fx_scene_path).instantiate()
+			get_tree().current_scene.add_child(fx)
+
+
+func _spawn_damage_number(dmg: int, multiplier: float) -> void:
+	if not is_instance_valid(target_enemy):
+		return
+
+	var lbl = Label.new()
+	lbl.add_theme_font_size_override(\"font_size\", 20 if multiplier <= 1.0 else 28)
+
+	if multiplier >= CRIT_MULT:
+		lbl.text = \"⚡-%d КРИТ!\" % dmg
+		lbl.add_theme_color_override(\"font_color\", Color(1.0, 0.9, 0.1))
+	elif multiplier <= MISS_MULT:
+		lbl.text = \"-%d\" % dmg
+		lbl.add_theme_color_override(\"font_color\", Color(0.7, 0.7, 0.7))
+	else:
+		lbl.text = \"-%d\" % dmg
+		lbl.add_theme_color_override(\"font_color\", Color(1.0, 0.3, 0.3))
+
+	get_tree().current_scene.add_child(lbl)
+	lbl.global_position = target_enemy.global_position + Vector2(-20, -50)
+
+	var tw = lbl.create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(lbl, \"position:y\", lbl.position.y - 50, 0.6)
+	tw.tween_property(lbl, \"modulate:a\", 0.0, 0.6)
+	tw.tween_callback(lbl.queue_free)
+
+
+func _hide_all() -> void:
+	question_panel.visible = false
+	answer_panel.visible = false
+	timer_bar.visible = false
+
+
+func _find_nearest_enemy() -> Node:
+	if not player_ref:
+		return null
+
+	var enemies = get_tree().get_nodes_in_group(\"enemy\")
+	var nearest: Node = null
+	var min_dist: float = 999999.0
+
+	for e in enemies:
+		if not is_instance_valid(e):
+			continue
+		var d = player_ref.global_position.distance_to(e.global_position)
+		if d < min_dist:
+			min_dist = d
+			nearest = e
+
+	return nearest if min_dist < 200.0 else null
+
+
+func _fallback_question() -> Dictionary:
+	var a = randi_range(1, 15)
+	var b = randi_range(1, 15)
+	var c = a + b
+	var opts = [c, c + randi_range(1, 4), maxi(0, c - randi_range(1, 4))]
+	opts.shuffle()
+	return {\"question\": \"%d + %d = ?\" % [a, b], \"correct\": c, \"options\": opts}
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjf02"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_druap"]
+bg_color = Color(0, 0.1853494, 0.3424313, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wiaio"]
+bg_color = Color(0.25808161, 0.25808164, 0.25808153, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a402"]
+bg_color = Color(0.31863892, 0.7007509, 0.2578682, 1)
+
+[node name="MathCombat" type="CanvasLayer" unique_id=215965513]
+process_mode = 3
+script = SubResource("GDScript_rjf02")
+
+[node name="Root" type="Control" parent="." unique_id=586823573]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuestionPanel" type="Panel" parent="Root" unique_id=490279246]
+z_index = 5
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 0
+offset_left = 819.0
+offset_top = 179.0
+offset_right = 1059.0
+offset_bottom = 259.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rjf02")
+
+[node name="AnswerPanel" type="Panel" parent="Root" unique_id=859059734]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 0
+offset_left = 392.0
+offset_top = 421.0
+offset_right = 786.0
+offset_bottom = 481.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_druap")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/AnswerPanel" unique_id=1795196175]
+layout_mode = 0
+offset_left = 372.0
+offset_top = -64.0
+offset_right = 719.0
+offset_bottom = -4.0
+theme_override_constants/separation = 8
+
+[node name="ABtn0" type="Button" parent="Root/AnswerPanel/HBoxContainer" unique_id=714368795]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="ABtn1" type="Button" parent="Root/AnswerPanel/HBoxContainer" unique_id=1293879223]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="ABtn2" type="Button" parent="Root/AnswerPanel/HBoxContainer" unique_id=1323640167]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="TimerBar" type="ProgressBar" parent="Root" unique_id=795993283]
+custom_minimum_size = Vector2(380, 20)
+layout_mode = 0
+offset_left = 750.0
+offset_top = 300.0
+offset_right = 1130.0
+offset_bottom = 327.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wiaio")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6a402")
+max_value = 2.0
+value = 2.0
+show_percentage = false

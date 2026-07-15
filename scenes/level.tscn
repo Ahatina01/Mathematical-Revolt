@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://6n0g17wcap6b"]
+
+[ext_resource type="Texture2D" uid="uid://3mvkorqcatvd" path="res://assets/итоговоееее.png" id="1_mx8sn"]
+[ext_resource type="Script" uid="uid://b3me0gt40oaqy" path="res://scripts/game2.gd" id="1_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://d1qcg6b3ry1yj" path="res://scenes/Player.tscn" id="2_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://dly77v4t3n4ip" path="res://scenes/up_menu.tscn" id="3_2r41h"]
+[ext_resource type="AudioStream" uid="uid://cmytpnt555grc" path="res://assets/audio/vibrant-pixel-rush_92817.ogg" id="4_klq6b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b121j"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c41q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olg7q"]
+bg_color = Color(0.44782823, 0.9661599, 0.25197375, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1rx8"]
+size = Vector2(3270, 603)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iemx"]
+size = Vector2(3433, 677)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64w2a"]
+size = Vector2(936, 2529)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fpun6"]
+size = Vector2(736, 2472)
+
+[node name="Level" type="Node2D" unique_id=531753688]
+script = ExtResource("1_ppgk2")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2046715403]
+offset_left = -1579.0
+offset_top = -1145.0
+offset_right = 5400.0
+offset_bottom = 3424.0
+texture = ExtResource("1_mx8sn")
+
+[node name="Player" parent="." unique_id=894845197 instance=ExtResource("2_ppgk2")]
+position = Vector2(580, 284)
+max_health = 50
+
+[node name="SpawnZones" type="Node2D" parent="." unique_id=18943193]
+
+[node name="SpawnNorth" type="Marker2D" parent="SpawnZones" unique_id=480464011 groups=["spawn_point"]]
+position = Vector2(1265, 287)
+
+[node name="SpawnSouth" type="Marker2D" parent="SpawnZones" unique_id=628769492 groups=["spawn_point"]]
+position = Vector2(768, 871)
+
+[node name="SpawnEast" type="Marker2D" parent="SpawnZones" unique_id=1002864493 groups=["spawn_point"]]
+position = Vector2(1202, 678)
+
+[node name="SpawnWest" type="Marker2D" parent="SpawnZones" unique_id=245765051 groups=["spawn_point"]]
+position = Vector2(323, 810)
+
+[node name="UpMenu" parent="." unique_id=239247809 instance=ExtResource("3_2r41h")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=593849168]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=1969493625]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.48200002
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -869.0
+offset_top = -326.33603
+offset_right = -777.0
+offset_bottom = -295.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Счёт: 0"
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1558521557 groups=["health_bar"]]
+offset_left = 2.0
+offset_top = 55.0
+offset_right = 299.0
+offset_bottom = 82.0
+theme_override_styles/background = SubResource("StyleBoxFlat_b121j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8c41q")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="UI" unique_id=164410033 groups=["stamina_bar"]]
+offset_top = 90.0
+offset_right = 299.0
+offset_bottom = 117.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_olg7q")
+value = 100.0
+
+[node name="PointNotify" type="Label" parent="UI" unique_id=862201487]
+custom_minimum_size = Vector2(400, 60)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BossHPPanel" type="Control" parent="UI" unique_id=1462987970]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BossBar" type="ProgressBar" parent="UI/BossHPPanel" unique_id=1248875426 groups=["boss_bar"]]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="ExitButton" type="Button" parent="UI" unique_id=1197483262]
+process_mode = 3
+custom_minimum_size = Vector2(80, 40)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -85.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "🏠 Меню"
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=1488689103]
+position = Vector2(831, -41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1656995505]
+position = Vector2(-156, -280.5)
+shape = SubResource("RectangleShape2D_t1rx8")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=291303918]
+position = Vector2(803, 1071)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=1957012354]
+position = Vector2(-44.5, 328.5)
+shape = SubResource("RectangleShape2D_8iemx")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1053603397]
+position = Vector2(10, 499)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=2091958081]
+position = Vector2(-465, -43.5)
+shape = SubResource("RectangleShape2D_64w2a")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1136852607]
+position = Vector2(1595, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1980910511]
+position = Vector2(354, -17)
+shape = SubResource("RectangleShape2D_fpun6")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=603737984]
+stream = ExtResource("4_klq6b")
+autoplay = true

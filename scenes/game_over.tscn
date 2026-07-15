@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://0rnx1mbvqbg7"]
+
+[ext_resource type="Script" uid="uid://mu3qru00y342" path="res://scripts/game_over.gd" id="1_xeevv"]
+
+[node name="GameOver" type="Control" unique_id=814325808]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xeevv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1336440331]
+visible = false
+layout_mode = 0
+offset_right = 1688.0
+offset_bottom = 885.0
+color = Color(0, 0, 0, 0.8509804)
+
+[node name="Label" type="Label" parent="." unique_id=783394734]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 149.0
+offset_right = 1922.0
+offset_bottom = 1229.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 90
+text = "ТЫ УМЕР"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="." unique_id=1213350690]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 309.0
+offset_right = 1160.0
+offset_bottom = 567.0
+theme_override_font_sizes/font_size = 32
+text = "🔄 НАЧАТЬ ЗАНОВО"
+
+[node name="MenuButton" type="Button" parent="." unique_id=1519407888]
+layout_mode = 0
+offset_left = 754.0
+offset_top = 620.0
+offset_right = 1154.0
+offset_bottom = 833.0
+theme_override_font_sizes/font_size = 32
+text = "🏠 ГЛАВНОЕ МЕНЮ"

@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://dly77v4t3n4ip"]
+
+[ext_resource type="Script" uid="uid://oyow1nj6btdr" path="res://scripts/up_menu.gd" id="1_tmnhr"]
+
+[node name="UpMenu" type="CanvasLayer" unique_id=239247809]
+process_mode = 3
+script = ExtResource("1_tmnhr")
+
+[node name="Panel" type="Panel" parent="." unique_id=819237870]
+custom_minimum_size = Vector2(360, 280)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -144.0
+offset_right = 180.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1427507034]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=591055810]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1039317298]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "ПРОКАЧКА"
+
+[node name="PointsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=291980727]
+layout_mode = 2
+text = "Очки прокачки: 0"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=1880264815]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=977096788]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1536199134]
+layout_mode = 2
+text = "❤ Здоровье: 100"
+
+[node name="BtnHP" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2129414099]
+layout_mode = 2
+text = "Улучшить"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=560469239]
+layout_mode = 2
+
+[node name="StaminaLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1662642835]
+layout_mode = 2
+text = "⚡ Выносливость: 100"
+
+[node name="BtnStamina" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1250165386]
+layout_mode = 2
+text = "Улучшить"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=59182950]
+layout_mode = 2
+
+[node name="ArmorLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=157888794]
+layout_mode = 2
+text = "🛡 Броня: 0"
+
+[node name="BtnArmor" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=552282632]
+layout_mode = 2
+text = "Улучшить"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=1926873658]
+layout_mode = 2
+
+[node name="MathPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer" unique_id=1978065015]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MathPanel" unique_id=1180702588]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuestionLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MathPanel/VBoxContainer" unique_id=1254342872]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MathPanel/VBoxContainer" unique_id=1919708943]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MathPanel/VBoxContainer/HBoxContainer" unique_id=970778122]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MathPanel/VBoxContainer/HBoxContainer" unique_id=1478485587]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="Panel/MarginContainer/VBoxContainer/MathPanel/VBoxContainer/HBoxContainer" unique_id=147657622]
+layout_mode = 2
+
+[node name="FeedbackLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=456727812]
+visible = false
+layout_mode = 2
+
+[node name="BtnClose" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1895687243]
+layout_mode = 2
+text = "Закрыть"

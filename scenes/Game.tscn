@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dxaum80wto7y6"]
+
+[ext_resource type="Script" uid="uid://c2mgbukq0aeuo" path="res://scripts/game.gd" id="1_cpr0p"]
+[ext_resource type="PackedScene" uid="uid://d1qcg6b3ry1yj" path="res://scenes/Player.tscn" id="1_ibkli"]
+[ext_resource type="PackedScene" uid="uid://dly77v4t3n4ip" path="res://scenes/up_menu.tscn" id="2_qbsmt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbsmt"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpr0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78awf"]
+bg_color = Color(0.44782823, 0.9661599, 0.25197375, 1)
+
+[node name="Game" type="CharacterBody2D" unique_id=1080240962]
+script = ExtResource("1_cpr0p")
+
+[node name="Background" type="ColorRect" parent="." unique_id=968156880]
+offset_left = -246.0
+offset_top = -240.0
+offset_right = 1154.0
+offset_bottom = 642.0
+
+[node name="SpawnZones" type="Node2D" parent="." unique_id=277961490]
+
+[node name="SpawnNorth" type="Marker2D" parent="SpawnZones" unique_id=1162233613 groups=["spawn_point"]]
+position = Vector2(0, -200)
+
+[node name="SpawnSouth" type="Marker2D" parent="SpawnZones" unique_id=2101708094 groups=["spawn_point"]]
+position = Vector2(0, 1280)
+
+[node name="SpawnEast" type="Marker2D" parent="SpawnZones" unique_id=174185231 groups=["spawn_point"]]
+position = Vector2(2120, 540)
+
+[node name="SpawnWest" type="Marker2D" parent="SpawnZones" unique_id=724501142 groups=["spawn_point"]]
+position = Vector2(-200, 540)
+
+[node name="SpawnNW" type="Marker2D" parent="SpawnZones" unique_id=1340953391 groups=["spawn_point"]]
+position = Vector2(-200, -200)
+
+[node name="SpawnNE" type="Marker2D" parent="SpawnZones" unique_id=1828020436 groups=["spawn_point"]]
+
+[node name="SpawnSW" type="Marker2D" parent="SpawnZones" unique_id=1198991899 groups=["spawn_point"]]
+position = Vector2(-200, 1280)
+
+[node name="SpawnSE" type="Marker2D" parent="SpawnZones" unique_id=1959955587 groups=["spawn_point"]]
+position = Vector2(2120, 1280)
+
+[node name="Player" parent="." unique_id=894845197 instance=ExtResource("1_ibkli")]
+position = Vector2(580, 284)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=236706384]
+wait_time = 2.1999999999999997
+autostart = true
+
+[node name="UpMenu" parent="." unique_id=239247809 instance=ExtResource("2_qbsmt")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=538459971]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=1542308855]
+offset_left = -1.0
+offset_top = 83.0
+offset_right = 55.0
+offset_bottom = 106.0
+text = "Счёт: 0"
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1628157624 groups=["health_bar"]]
+offset_left = 190.0
+offset_top = 140.0
+offset_right = 363.0
+offset_bottom = 167.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qbsmt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cpr0p")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="UI" unique_id=1667575222 groups=["stamina_bar"]]
+offset_left = 190.0
+offset_top = 196.0
+offset_right = 362.0
+offset_bottom = 223.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_78awf")
+value = 100.0
+
+[node name="BossHPPanel" type="Control" parent="UI" unique_id=1020713021]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BossBar" type="ProgressBar" parent="UI/BossHPPanel" unique_id=733476057 groups=["boss_bar"]]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cmoc5ha0r6ygt"]
+
+[ext_resource type="Script" uid="uid://qd0yhdkd8vv0" path="res://scripts/level_transition.gd" id="1_hp486"]
+[ext_resource type="VideoStream" uid="uid://3ygeec438nvc" path="res://assets/video/0606-zo28fy.ogv" id="2_2ybma"]
+
+[node name="VideoIntro" type="Control" unique_id=1057902570]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hp486")
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="." unique_id=42680759]
+layout_mode = 0
+offset_top = -7.0
+offset_right = 1920.0
+offset_bottom = 1085.0
+stream = ExtResource("2_2ybma")
+autoplay = true
+
+[node name="SkipButton" type="Button" parent="." unique_id=1527537000]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 233.0
+offset_bottom = 49.0
+text = "ПРОБЕЛ — ПРОПУСТИТЬ"

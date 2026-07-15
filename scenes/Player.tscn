@@ -1,0 +1,413 @@
+[gd_scene format=3 uid="uid://d1qcg6b3ry1yj"]
+
+[ext_resource type="Script" uid="uid://catsbmpi1qpyy" path="res://scripts/player.gd" id="1_p0vlq"]
+[ext_resource type="Texture2D" uid="uid://clmv8ubjbk0cd" path="res://assets/sprites/13.png" id="2_6eyey"]
+[ext_resource type="Texture2D" uid="uid://ctsjsxfqfhm6e" path="res://assets/sprites/8.png" id="2_p07f3"]
+[ext_resource type="Texture2D" uid="uid://b1378axtulxln" path="res://assets/sprites/Без названия (4) (8).png" id="2_qmt83"]
+[ext_resource type="Texture2D" uid="uid://bowlb38jy10tr" path="res://assets/sprites/3.png" id="2_qu4a1"]
+[ext_resource type="Texture2D" uid="uid://b3ct3gitkf83n" path="res://assets/sprites/1.png" id="2_v6fml"]
+[ext_resource type="Texture2D" uid="uid://clmo4fgfa45c7" path="res://assets/sprites/Без названия (4) (9).png" id="3_m4as6"]
+[ext_resource type="Texture2D" uid="uid://or4j5gj0pcnq" path="res://assets/sprites/Без названия (4) (10).png" id="4_b1r6t"]
+[ext_resource type="Texture2D" uid="uid://c60ubj4bsbmjf" path="res://assets/sprites/24.png" id="4_d3wef"]
+[ext_resource type="Texture2D" uid="uid://b77kpa5iqyq3v" path="res://assets/sprites/14.png" id="5_6e537"]
+[ext_resource type="Texture2D" uid="uid://bc0m4y2fhn6u7" path="res://assets/sprites/Без названия (4) (11).png" id="5_c0asu"]
+[ext_resource type="Texture2D" uid="uid://ce3rpck8di7yv" path="res://assets/sprites/7.png" id="5_cw2d6"]
+[ext_resource type="Texture2D" uid="uid://b08g8ti6igmc7" path="res://assets/sprites/Без названия (4) (1).png" id="6_fq1a3"]
+[ext_resource type="Texture2D" uid="uid://cvgn4adrxp57u" path="res://assets/sprites/Без названия (4) (2).png" id="7_gu4mg"]
+[ext_resource type="Texture2D" uid="uid://cssxkleuektpa" path="res://assets/sprites/9.png" id="7_lkdrv"]
+[ext_resource type="Texture2D" uid="uid://qjbe3qe6fwwt" path="res://assets/sprites/12.png" id="8_p7iby"]
+[ext_resource type="Texture2D" uid="uid://1tbv22j2gse8" path="res://assets/sprites/Без названия (4) (3).png" id="8_tk6la"]
+[ext_resource type="Texture2D" uid="uid://bgvjbiuogsnja" path="res://assets/sprites/11.png" id="9_0rnld"]
+[ext_resource type="Texture2D" uid="uid://lkdgn1j654mf" path="res://assets/sprites/18.png" id="9_gv3ic"]
+[ext_resource type="Texture2D" uid="uid://x3ps4g77l0gh" path="res://assets/sprites/20.png" id="9_o4126"]
+[ext_resource type="Texture2D" uid="uid://cohkaff110dnn" path="res://assets/sprites/Без названия (4) (4).png" id="9_yrxk4"]
+[ext_resource type="Texture2D" uid="uid://bj3qey3nq57j4" path="res://assets/sprites/17.png" id="10_b8lor"]
+[ext_resource type="Texture2D" uid="uid://bpqa51kx81r4" path="res://assets/sprites/Без названия (4) (5).png" id="10_eg1p0"]
+[ext_resource type="Texture2D" uid="uid://bhbvpobtidvqy" path="res://assets/sprites/19.png" id="10_lkdrv"]
+[ext_resource type="Texture2D" uid="uid://br2evaoed0c18" path="res://assets/sprites/10.png" id="10_srp4u"]
+[ext_resource type="Texture2D" uid="uid://cxkhu8n1pch3j" path="res://assets/sprites/15.png" id="11_6e537"]
+[ext_resource type="Texture2D" uid="uid://dkx3hof0i3bod" path="res://assets/sprites/22.png" id="11_p7iby"]
+[ext_resource type="Texture2D" uid="uid://dh5ecsc17ck8g" path="res://assets/sprites/Без названия (4) (6).png" id="11_x2u8p"]
+[ext_resource type="Texture2D" uid="uid://bfhtw0r662c54" path="res://assets/sprites/21.png" id="12_0rnld"]
+[ext_resource type="Texture2D" uid="uid://dm70ma3ukffgl" path="res://assets/sprites/16.png" id="12_p07f3"]
+[ext_resource type="Texture2D" uid="uid://cfmmkesbbsqgg" path="res://assets/sprites/Без названия (4) (7).png" id="12_qv10x"]
+[ext_resource type="Texture2D" uid="uid://cjlxjtjmdhkxt" path="res://assets/sprites/23.png" id="12_viqgg"]
+[ext_resource type="Texture2D" uid="uid://bclyuuntsca3k" path="res://assets/sprites/6.png" id="14_fgkxt"]
+[ext_resource type="Texture2D" uid="uid://dnnh6ts50kqea" path="res://assets/sprites/4.png" id="16_xsi7p"]
+[ext_resource type="Texture2D" uid="uid://bt4kjg3o0xy2s" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (22).png" id="25_la8f2"]
+[ext_resource type="Texture2D" uid="uid://b0t4eg3f4o5ms" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (26).png" id="26_oanc2"]
+[ext_resource type="Texture2D" uid="uid://bjasckh8kejka" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (23).png" id="27_41lfj"]
+[ext_resource type="Texture2D" uid="uid://cx2rcvf8o5n8t" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (27).png" id="28_1nh4m"]
+[ext_resource type="Texture2D" uid="uid://c3gkwrbka745n" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (28).png" id="29_2hk6f"]
+[ext_resource type="Texture2D" uid="uid://b0t77qj3wgenw" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (29).png" id="30_xmxrx"]
+[ext_resource type="Texture2D" uid="uid://duj6cp3rxdijl" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (30).png" id="31_kvw7q"]
+[ext_resource type="Texture2D" uid="uid://dceljljj8a36i" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (34).png" id="32_p0eor"]
+[ext_resource type="Texture2D" uid="uid://4ltqxci7p21q" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (35).png" id="33_nrwhh"]
+[ext_resource type="Texture2D" uid="uid://cj2xejugpq814" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (15).png" id="34_s7djh"]
+[ext_resource type="Texture2D" uid="uid://cuglongdon3tf" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (16).png" id="35_wx1s8"]
+[ext_resource type="Texture2D" uid="uid://cuv1xwus75t0v" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (17).png" id="36_im07a"]
+[ext_resource type="Texture2D" uid="uid://cn62gskurqq6t" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (18).png" id="37_dsbg5"]
+[ext_resource type="Texture2D" uid="uid://n7ug0j53e18r" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (19).png" id="38_uobdy"]
+[ext_resource type="Texture2D" uid="uid://bjpfapoyv2alx" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (20).png" id="39_iv1vf"]
+[ext_resource type="Texture2D" uid="uid://d2absb1dy5nwv" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (21).png" id="40_2viqe"]
+[ext_resource type="Texture2D" uid="uid://cxxwoma7el8w8" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (7).png" id="41_rjt17"]
+[ext_resource type="Texture2D" uid="uid://cb1gkmfirhnrt" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (2).png" id="42_27epi"]
+[ext_resource type="Texture2D" uid="uid://de88pjynwrc5w" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (3).png" id="43_84ti5"]
+[ext_resource type="Texture2D" uid="uid://c1178yxljquay" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (4).png" id="44_afj6a"]
+[ext_resource type="Texture2D" uid="uid://baykagkgltsno" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (5).png" id="45_cji5y"]
+[ext_resource type="Texture2D" uid="uid://cxadnmgpsl42h" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (6).png" id="46_blnfk"]
+[ext_resource type="Texture2D" uid="uid://c8cfj1ugqfiph" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (8).png" id="47_qabq5"]
+[ext_resource type="Texture2D" uid="uid://bb1nlsnfkc0xo" path="res://assets/sprites/ттата (6).png" id="48_bqny8"]
+[ext_resource type="Texture2D" uid="uid://cta8n65nof1dj" path="res://assets/sprites/ттата (5).png" id="49_mgg3w"]
+[ext_resource type="Texture2D" uid="uid://so6i00q4ajw3" path="res://assets/sprites/ттата (4).png" id="50_kpppk"]
+[ext_resource type="Texture2D" uid="uid://bym77u3wcwtsu" path="res://assets/sprites/ттата (3).png" id="51_sm57i"]
+[ext_resource type="Texture2D" uid="uid://dqthuxiqxhofa" path="res://assets/sprites/ттата (1).png" id="52_xdlf2"]
+[ext_resource type="Texture2D" uid="uid://dmmmhtwco00qe" path="res://assets/sprites/ттата (2).png" id="53_e2ifm"]
+[ext_resource type="Texture2D" uid="uid://dlpvdrxyl8g6g" path="res://assets/sprites/ттата (7).png" id="54_1vqve"]
+[ext_resource type="Texture2D" uid="uid://dgmuyvrh5qul6" path="res://assets/sprites/ттата (8).png" id="55_xfjxt"]
+[ext_resource type="Texture2D" uid="uid://bw52hvmxvbrhu" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (9).png" id="63_i5kac"]
+[ext_resource type="Texture2D" uid="uid://bxdqccoqbhwlm" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (10).png" id="64_qycqj"]
+[ext_resource type="Texture2D" uid="uid://b0scth2fchcrj" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (11).png" id="65_24r77"]
+[ext_resource type="Texture2D" uid="uid://b36y4e03ed1wd" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (12).png" id="66_07ay5"]
+[ext_resource type="Texture2D" uid="uid://b5rq5ml0v7gbu" path="res://assets/sprites/pixellab-A-schoolboy-with-glasses-and-a-1780521301269 (13).png" id="67_onyu1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0vlq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qmt83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c0asu")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_m4as6")
+}],
+"loop": true,
+"name": &"block_hold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b1r6t")
+}],
+"loop": true,
+"name": &"block_start",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fq1a3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gu4mg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tk6la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yrxk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eg1p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x2u8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qv10x")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_p07f3")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_0rnld")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_cw2d6")
+}],
+"loop": true,
+"name": &"idle_e",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_6eyey")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_6e537")
+}, {
+"duration": 2.0,
+"texture": ExtResource("10_b8lor")
+}],
+"loop": true,
+"name": &"idle_n",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v6fml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qu4a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xsi7p")
+}],
+"loop": true,
+"name": &"idle_s",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("4_d3wef")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_o4126")
+}, {
+"duration": 2.0,
+"texture": ExtResource("12_viqgg")
+}],
+"loop": true,
+"name": &"idle_w",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_la8f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_oanc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_41lfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_1nh4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_2hk6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_xmxrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_kvw7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_p0eor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_nrwhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_la8f2")
+}],
+"loop": true,
+"name": &"roll_e",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_s7djh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_wx1s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_im07a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_dsbg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_uobdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_iv1vf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_2viqe")
+}],
+"loop": true,
+"name": &"roll_n",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_rjt17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_27epi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_84ti5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_afj6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_cji5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_blnfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_qabq5")
+}],
+"loop": true,
+"name": &"roll_s",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_bqny8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_mgg3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_kpppk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_sm57i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_xdlf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_e2ifm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_1vqve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_xfjxt")
+}],
+"loop": true,
+"name": &"roll_w",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_p7iby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0rnld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lkdrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0rnld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_srp4u")
+}],
+"loop": true,
+"name": &"walk_e",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gv3ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b8lor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6e537")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b8lor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p07f3")
+}],
+"loop": true,
+"name": &"walk_n",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_fgkxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_i5kac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_qycqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_24r77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_07ay5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_onyu1")
+}],
+"loop": true,
+"name": &"walk_s",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_lkdrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o4126")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_p7iby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o4126")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0rnld")
+}],
+"loop": true,
+"name": &"walk_w",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6fml"]
+radius = 8.0
+height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0vlq"]
+size = Vector2(40, 39)
+
+[node name="Player" type="CharacterBody2D" unique_id=894845197 groups=["player"]]
+script = ExtResource("1_p0vlq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1348294015]
+position = Vector2(1, 0.5)
+scale = Vector2(1.0217391, 0.98913044)
+sprite_frames = SubResource("SpriteFrames_p0vlq")
+animation = &"block_start"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=378971038]
+shape = SubResource("CapsuleShape2D_v6fml")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1448727881]
+position = Vector2(20, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=197057082]
+position = Vector2(-20, 0)
+shape = SubResource("RectangleShape2D_p0vlq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1002334892]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true

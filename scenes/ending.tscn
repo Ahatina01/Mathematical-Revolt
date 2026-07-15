@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bs6jhl6usklmt"]
+
+[ext_resource type="Script" uid="uid://bgyu0677r2xnl" path="res://scripts/ending.gd" id="1_fyrdv"]
+[ext_resource type="VideoStream" uid="uid://hqa7e0ksi71k" path="res://assets/video/0606-1-hu5lri.ogv" id="2_fyrdv"]
+
+[node name="VideoIntro" type="Control" unique_id=1878244127]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fyrdv")
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="." unique_id=1164774425]
+layout_mode = 0
+offset_top = -3.0
+offset_right = 1920.0
+offset_bottom = 1087.0
+stream = ExtResource("2_fyrdv")
+autoplay = true
+
+[node name="SkipButton" type="Button" parent="." unique_id=670934135]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

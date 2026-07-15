@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://bw5he388cudr2"]
+
+[sub_resource type="GDScript" id="GDScript_xena6"]
+script/source = "extends Node2D
+
+@onready var flash_rect: ColorRect = $FlashRect
+@onready var floating_label: Label = $FloatingLabel
+@onready var number_particles: CPUParticles2D = $NumberParticles
+
+var _playing := false
+
+
+func _ready() -> void:
+	_setup_nodes()
+	flash_rect.visible = false
+	floating_label.visible = false
+	number_particles.emitting = false
+
+
+func _setup_nodes() -> void:
+	# FlashRect
+	flash_rect.color = Color(0.2, 1.0, 0.3, 0.0)
+	flash_rect.anchor_left = 0
+	flash_rect.anchor_top = 0
+	flash_rect.anchor_right = 1
+	flash_rect.anchor_bottom = 1
+	flash_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	# FloatingLabel
+	floating_label.text = \"+1 УМ\"
+	floating_label.add_theme_font_size_override(\"font_size\", 32)
+	floating_label.add_theme_color_override(\"font_color\", Color(0.2, 1.0, 0.3))
+	floating_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+	# CPUParticles2D
+	number_particles.emitting = false
+	number_particles.amount = 12
+	number_particles.lifetime = 0.6
+	number_particles.one_shot = true
+	number_particles.explosiveness = 0.9
+	number_particles.direction = Vector2(0, -1)
+	number_particles.spread = 60.0
+	number_particles.gravity = Vector2(0, 80)
+	number_particles.initial_velocity_min = 80.0
+	number_particles.initial_velocity_max = 160.0
+	number_particles.scale_amount_min = 1.0
+	number_particles.scale_amount_max = 2.0
+	number_particles.color = Color(0.3, 1.0, 0.4)
+
+
+func play(screen_position: Vector2 = Vector2.ZERO) -> void:
+	if _playing:
+		return
+	_playing = true
+
+	var center = screen_position
+	if center == Vector2.ZERO:
+		# ИСПРАВЛЕНО: get_viewport().get_visible_rect()
+		center = get_viewport().get_visible_rect().size / 2.0
+
+	global_position = center
+	number_particles.global_position = center
+	floating_label.global_position = center + Vector2(-40, -20)
+
+	play_sound()
+	_flash()
+	_float_label()
+	_emit_particles()
+
+	await get_tree().create_timer(0.7).timeout
+	_playing = false
+
+
+func play_sound() -> void:
+	pass  # заглушка
+
+
+func _flash() -> void:
+	flash_rect.visible = true
+	var tw = create_tween()
+	tw.tween_property(flash_rect, \"color:a\", 0.45, 0.05)
+	tw.tween_property(flash_rect, \"color:a\", 0.0, 0.25)
+	tw.tween_callback(func(): flash_rect.visible = false)
+
+
+func _float_label() -> void:
+	floating_label.visible = true
+	floating_label.modulate = Color.WHITE
+	var start_pos = floating_label.global_position
+	var end_pos = start_pos + Vector2(0, -70)
+	var tw = create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(floating_label, \"global_position\", end_pos, 0.5).set_ease(Tween.EASE_OUT)
+	tw.tween_property(floating_label, \"modulate:a\", 0.0, 0.5).set_ease(Tween.EASE_IN)
+	tw.tween_callback(func(): floating_label.visible = false)
+
+
+func _emit_particles() -> void:
+	number_particles.emitting = true
+"
+
+[sub_resource type="Gradient" id="Gradient_xena6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ko3o"]
+gradient = SubResource("Gradient_xena6")
+
+[node name="CorrectAnswerFx" type="Node2D" unique_id=1297035894]
+script = SubResource("GDScript_xena6")
+
+[node name="FlashRect" type="ColorRect" parent="." unique_id=52278214]
+modulate = Color(1.1920273, 1.1920273, 1.1920273, 0)
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FloatingLabel" type="Label" parent="." unique_id=1365673680]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -11.5
+offset_right = 24.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.33664933, 0.89016765, 0.29115462, 1)
+theme_override_font_sizes/font_size = 32
+text = "+1 УМ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumberParticles" type="CPUParticles2D" parent="." unique_id=1818117789]
+amount = 20
+texture = SubResource("GradientTexture2D_1ko3o")
+lifetime = 0.8
+direction = Vector2(0, -1)
+spread = 180.0
+color = Color(1, 1, 0.26666668, 1)
+anim_speed_min = 30.0
+anim_speed_max = 80.0

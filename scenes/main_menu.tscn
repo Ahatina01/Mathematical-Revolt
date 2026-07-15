@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://caxus1n22hw11"]
+
+[ext_resource type="Script" uid="uid://dm0ph4ritucm5" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bcdol27ieag6m" path="res://assets/new_fon.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://c3odmk4af7pn0" path="res://assets/упра2.png" id="3_bqqt6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MainButtons" type="Control" unique_id=1189394466]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("1_l6cm7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=19007523]
+layout_mode = 0
+offset_left = -1009.0
+offset_top = -626.0
+offset_right = 1021.0
+offset_bottom = 636.0
+texture = ExtResource("2_bqqt6")
+
+[node name="MainButtons" type="VBoxContainer" parent="." unique_id=987044613]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BtnPlay" type="Button" parent="MainButtons" unique_id=155922802]
+layout_mode = 2
+focus_next = NodePath("../BtnSettings")
+text = "▶ ИГРАТЬ"
+
+[node name="BtnSettings" type="Button" parent="MainButtons" unique_id=1025622087]
+layout_mode = 2
+focus_next = NodePath("../BtnExit")
+focus_previous = NodePath(".")
+text = "⚙ НАСТРОЙКИ"
+
+[node name="BtnExit" type="Button" parent="MainButtons" unique_id=394626796]
+layout_mode = 2
+focus_previous = NodePath("../BtnSettings")
+text = "✕ ВЫХОД"
+
+[node name="SettingsPanel" type="Panel" parent="." unique_id=2116306814]
+layout_mode = 0
+offset_left = -304.0
+offset_top = -266.0
+offset_right = 401.0
+offset_bottom = 166.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekxnf")
+
+[node name="TabContainer" type="TabContainer" parent="SettingsPanel" unique_id=51377967]
+layout_mode = 0
+offset_top = 28.0
+offset_right = 706.0
+offset_bottom = 431.0
+current_tab = 0
+
+[node name="Общие" type="VBoxContainer" parent="SettingsPanel/TabContainer" unique_id=367564099]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsPanel/TabContainer/Общие" unique_id=978038807]
+layout_mode = 2
+text = "Полноэкранный режим"
+
+[node name="Label2" type="Label" parent="SettingsPanel/TabContainer/Общие" unique_id=1526942993]
+layout_mode = 2
+text = "Громкость"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel/TabContainer/Общие" unique_id=1840497422]
+layout_mode = 2
+value = 80.0
+
+[node name="BtnSettingsClose" type="Button" parent="SettingsPanel/TabContainer/Общие" unique_id=1003944217]
+layout_mode = 2
+text = "Закрыть"
+
+[node name="Управление" type="VBoxContainer" parent="SettingsPanel/TabContainer" unique_id=259463400]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="SettingsPanel/TabContainer/Управление" unique_id=909261335]
+layout_mode = 2
+texture = ExtResource("3_bqqt6")
+stretch_mode = 1

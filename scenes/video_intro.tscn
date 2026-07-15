@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d10ohhhws2fjo"]
+
+[ext_resource type="Script" uid="uid://db7g5qrl8yoew" path="res://scripts/video_intro.gd" id="1_xbovl"]
+[ext_resource type="VideoStream" uid="uid://egnr0igyq2e7" path="res://assets/video/0605-1-rchtek.ogv" id="2_mmaii"]
+
+[node name="VideoIntro" type="Control" unique_id=1057902570]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbovl")
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="." unique_id=42680759]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("2_mmaii")
+autoplay = true
+
+[node name="SkipButton" type="Button" parent="." unique_id=1527537000]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 208.0
+offset_bottom = 45.0
+text = "ПРОБЕЛ — ПРОПУСТИТЬ"
